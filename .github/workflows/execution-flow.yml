@@ -38,7 +38,7 @@ jobs:
       - name: Upload test report
       # GitHub actions expects an if statement to always have some logical expression, therefore the ${{ }} can be omitted
       # failure() returns true if ANY of the previous steps in the test job failed
-        if: failure() && steps.run-test.outcome == 'failure'
+        if: failure() && steps.run-tests.outcome == 'failure'
         uses: actions/upload-artifact@v3
         with:
           name: test-report
