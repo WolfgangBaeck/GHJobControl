@@ -33,8 +33,11 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Test code
+        id: run-tests
         run: npm run test
       - name: Upload test report
+      # GitHub actions expects an if statement to always have some logical expression, therefore the ${{ }} can be omitted
+        if: steps.run-test.outcome == 'failure'
         uses: actions/upload-artifact@v3
         with:
           name: test-report
